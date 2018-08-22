@@ -125,7 +125,7 @@ format-padding = 1
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+interface = wlp3s0
 interval = 3.0
 format-connected = <label-connected>
 format-connected-padding = 0
@@ -156,11 +156,11 @@ format-disconnected = "eth off"
 [module/date]
 type = internal/date
 interval = 5
-date = " %a %d %b "
-date-alt = " %Y-%m-%d "
+date = " %a %d %b"
+date-alt = " %Y-%m-%d"
 time = %l:%M %p
 time-alt = %l:%M %p
-label = %date%-%time%
+label = %date% - %time%
 format-prefix = "____["
 format-prefix-foreground = #A3BE8C
 format-suffix = " ]____"
@@ -174,7 +174,7 @@ format = "<label> "
 format-prefix = "vol: "
 format-padding = 0
 format-prefix-foreground = ${colors.secondary}
-exec = amixer sget Master | awk -F"[][]" '/dB/ { print $2 }'
+exec = pamixer --get-volume | awk '{print $0"%"}'
 
 [module/battery]
 type = internal/battery
