@@ -158,8 +158,10 @@ bindsym $mod+Return exec --no-startup-id termite
 # KEYBOARD CONTROLS #
 #-------------------#
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/.local/bin/pavolume -5%"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/.local/bin/pavolume +5%"
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 
 #------#
 # GAPS #
@@ -191,11 +193,11 @@ client.background #
 #----------------------#
 
 #exec xrandr --output HDMI-0 --left-of DVI-D-0
-exec_always --no-startup-id feh --bg-fill ~/Pictures/Frostpunk_left.jpg --big-fill ~/Pictures/Frostpunk_right.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/Frostpunk_right.jpg --big-fill ~/Pictures/Frostpunk_left.jpg
 exec --no-startup-id compton -cb --config ~/.config/compton/compton.conf
-#exec --no-startup-id nextcloud
+exec --no-startup-id nextcloud
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-
+exec --no-startup-id gtk-redshift
 #---------------#
 # SPECIAL CASES #
 #---------------#
@@ -205,9 +207,18 @@ for_window [class="Thunar"] floating enable
 for_window [class="Thunar"] resize set 1000 750
 for_window [class="Thunar"] move position center
 
+# vlc
+for_window [class="vlc"] floating enable
+for_window [class="vlc"] resize set 1000 750
+for_window [class="vlc"] move position center
+
 # feh
 for_window [class="feh"] floating enable
 for_window [class="feh"] move position center
+
+#gimp
+for_window [class="gimp"] floating enable
+for_window [class="gimp"] move position center
 
 # dropdown terminal
 # for_window [instance="floating"] floating enable
